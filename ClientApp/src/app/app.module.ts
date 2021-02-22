@@ -9,6 +9,8 @@ import { NavMenuComponent } from "./nav-menu/nav-menu.component";
 import { HomeComponent } from "./home/home.component";
 import { CitiesComponent } from "./cities/cities.component";
 import { CountriesComponent } from "./countries/countries.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AngularMaterialModule } from "./angular-material.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CountriesComponent } from "./countries/countries.component";
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "cities", component: CitiesComponent },
       { path: "countries", component: CountriesComponent }
-    ])
+    ]),
+    BrowserAnimationsModule,
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
