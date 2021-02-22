@@ -8,13 +8,15 @@ import { AppComponent } from "./app.component";
 import { NavMenuComponent } from "./nav-menu/nav-menu.component";
 import { HomeComponent } from "./home/home.component";
 import { CitiesComponent } from "./cities/cities.component";
+import { CountriesComponent } from "./countries/countries.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CitiesComponent
+    CitiesComponent,
+    CountriesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -22,7 +24,8 @@ import { CitiesComponent } from "./cities/cities.component";
     FormsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
-      { path: "cities", component: CitiesComponent }
+      { path: "cities", component: CitiesComponent },
+      { path: "countries", component: CountriesComponent }
     ])
   ],
   providers: [],
