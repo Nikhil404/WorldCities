@@ -11,14 +11,14 @@ import { MatSelectModule } from "@angular/material/select";
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   exports: [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    MatSelectModule
-  ]
+    MatSelectModule,
+  ],
 })
 export class AngularMaterialModule {}
