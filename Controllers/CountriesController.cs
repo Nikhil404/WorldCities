@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorldCities.Data;
 using WorldCities.Data.Models;
-using System.Linq.Dynamic.Core;
 
 namespace WorldCities.Controllers
 {
@@ -22,7 +22,10 @@ namespace WorldCities.Controllers
             _context = context;
         }
 
-        // GET: api/Countries
+        // GET: api/Cities
+        // GET: api/Countries/?pageIndex=0&pageSize=10
+        // GET: api/Countries/?pageIndex=0&pageSize=10&sortColumn=name&sortOrder=asc
+        // GET: api/Countries/?pageIndex=0&pageSize=10&sortColumn=name&sortOrder=asc&filterColumn=name&filterQuery=york
         [HttpGet]
         public async Task<ActionResult<ApiResult<CountryDTO>>> GetCountries(
         int pageIndex = 0,
@@ -50,6 +53,59 @@ namespace WorldCities.Controllers
                     filterQuery);
         }
 
+        //public async Task<ActionResult<ApiResult<dynamic>>> GetCountries(
+        //    int pageIndex = 0,
+        //    int pageSize = 10,
+        //    string sortColumn = null,
+        //    string sortOrder = null,
+        //    string filterColumn = null,
+        //    string filterQuery = null)
+        //{
+        //    return await ApiResult<dynamic>.CreateAsync(
+        //            _context.Countries
+        //                .Select(c => new
+        //                {
+        //                    Id = c.Id,
+        //                    Name = c.Name,
+        //                    ISO2 = c.ISO2,
+        //                    ISO3 = c.ISO3,
+        //                    TotCities = c.Cities.Count
+        //                }),
+        //            pageIndex,
+        //            pageSize,
+        //            sortColumn,
+        //            sortOrder,
+        //            filterColumn,
+        //            filterQuery);
+        //}
+
+
+        //public async Task<ActionResult<ApiResult<Country>>> GetCountries(
+        //int pageIndex = 0,
+        //int pageSize = 10,
+        //string sortColumn = null,
+        //string sortOrder = null,
+        //string filterColumn = null,
+        //string filterQuery = null)
+        //{
+        //    return await ApiResult<Country>.CreateAsync(
+        //            _context.Countries
+        //                .Select(c => new Country()
+        //                {
+        //                    Id = c.Id,
+        //                    Name = c.Name,
+        //                    ISO2 = c.ISO2,
+        //                    ISO3 = c.ISO3,
+        //                    TotCities = c.Cities.Count
+        //                }),
+        //            pageIndex,
+        //            pageSize,
+        //            sortColumn,
+        //            sortOrder,
+        //            filterColumn,
+        //            filterQuery);
+        //}
+
         // GET: api/Countries/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Country>> GetCountry(int id)
@@ -65,8 +121,8 @@ namespace WorldCities.Controllers
         }
 
         // PUT: api/Countries/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCountry(int id, Country country)
         {
@@ -97,8 +153,8 @@ namespace WorldCities.Controllers
         }
 
         // POST: api/Countries
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<Country>> PostCountry(Country country)
         {
@@ -131,10 +187,12 @@ namespace WorldCities.Controllers
 
         [HttpPost]
         [Route("IsDupeField")]
-        public bool IsDupeField(int countryId,string fieldName,string fieldValue)
+        public bool IsDupeField(
+            int countryId,
+            string fieldName,
+            string fieldValue)
         {
-            #region First way of implementation
-
+            // Standard approach(using strongly-typed LAMBA expressions)
             //switch (fieldName)
             //{
             //    case "name":
@@ -150,13 +208,13 @@ namespace WorldCities.Controllers
             //        return false;
             //}
 
-            #endregion
-
-            #region Alternative approach (using System.Linq.Dynamic.Core)
-
-            return (ApiResult<Country>.IsValidProperty(fieldName, true)) ? _context.Countries.Any(
-                String.Format("{0} == @0 && Id != @1", fieldName), fieldValue, countryId) : false;
-            #endregion
+            // Dynamic approach (using System.Linq.Dynamic.Core)
+            return (ApiResult<Country>.IsValidProperty(fieldName, true))
+                ? _context.Countries.Any(
+                    String.Format("{0} == @0 && Id != @1", fieldName),
+                    fieldValue,
+                    countryId)
+                : false;
         }
     }
 }

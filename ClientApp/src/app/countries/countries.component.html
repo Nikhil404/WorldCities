@@ -5,7 +5,7 @@
 <p *ngIf="!countries"><em>Loading...</em></p>
 
 <div class="commands text-right" *ngIf="countries">
-  <button type="submit" [routerLink]="['/country']" class="btn btn-success">
+  <button type="button" [routerLink]="['/country']" class="btn btn-success">
     Add a new Country
   </button>
 </div>
@@ -54,7 +54,7 @@
     <td mat-cell *matCellDef="let country">{{ country.iso3 }}</td>
   </ng-container>
 
-  <!-- TotCitiesColumn -->
+  <!-- TotCities Column -->
   <ng-container matColumnDef="totCities">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Tot. Cities</th>
     <td mat-cell *matCellDef="let country">{{ country.totCities }}</td>
@@ -63,7 +63,6 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-
 <!-- Pagination directive -->
 <mat-paginator
   [hidden]="!countries"

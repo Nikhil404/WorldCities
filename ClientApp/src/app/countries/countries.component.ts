@@ -1,4 +1,5 @@
 import { Component, Inject, ViewChild } from "@angular/core";
+// import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
@@ -10,7 +11,7 @@ import { ApiResult } from "../base.service";
 @Component({
   selector: "app-countries",
   templateUrl: "./countries.component.html",
-  styleUrls: ["./countries.component.css"]
+  styleUrls: ["./countries.component.css"],
 })
 export class CountriesComponent {
   public displayedColumns: string[] = [
@@ -18,16 +19,16 @@ export class CountriesComponent {
     "name",
     "iso2",
     "iso3",
-    "totCities"
+    "totCities",
   ];
   public countries: MatTableDataSource<Country>;
 
-  defaultPageIndex = 0;
-  defaultPageSize = 10;
-  public defaultSortColumn = "name";
-  public defaultSortOrder = "asc";
+  defaultPageIndex: number = 0;
+  defaultPageSize: number = 10;
+  public defaultSortColumn: string = "name";
+  public defaultSortOrder: string = "asc";
 
-  defaultFilterColumn = "name";
+  defaultFilterColumn: string = "name";
   filterQuery: string = null;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -40,7 +41,7 @@ export class CountriesComponent {
   }
 
   loadData(query: string = null) {
-    const pageEvent = new PageEvent();
+    var pageEvent = new PageEvent();
     pageEvent.pageIndex = this.defaultPageIndex;
     pageEvent.pageSize = this.defaultPageSize;
     if (query) {
@@ -68,13 +69,13 @@ export class CountriesComponent {
         filterQuery
       )
       .subscribe(
-        result => {
+        (result) => {
           this.paginator.length = result.totalCount;
           this.paginator.pageIndex = result.pageIndex;
           this.paginator.pageSize = result.pageSize;
           this.countries = new MatTableDataSource<Country>(result.data);
         },
-        error => console.error(error)
+        (error) => console.error(error)
       );
   }
 }

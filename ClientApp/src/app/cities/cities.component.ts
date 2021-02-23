@@ -1,5 +1,4 @@
 import { Component, Inject, ViewChild } from "@angular/core";
-import { HttpClient, HttpParams } from "@angular/common/http";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
@@ -11,7 +10,7 @@ import { ApiResult } from "../base.service";
 @Component({
   selector: "app-cities",
   templateUrl: "./cities.component.html",
-  styleUrls: ["./cities.component.css"]
+  styleUrls: ["./cities.component.css"],
 })
 export class CitiesComponent {
   public displayedColumns: string[] = [
@@ -19,7 +18,7 @@ export class CitiesComponent {
     "name",
     "lat",
     "lon",
-    "countryName"
+    "countryName",
   ];
   public cities: MatTableDataSource<City>;
 
@@ -69,13 +68,13 @@ export class CitiesComponent {
         filterQuery
       )
       .subscribe(
-        result => {
+        (result) => {
           this.paginator.length = result.totalCount;
           this.paginator.pageIndex = result.pageIndex;
           this.paginator.pageSize = result.pageSize;
           this.cities = new MatTableDataSource<City>(result.data);
         },
-        error => console.error(error)
+        (error) => console.error(error)
       );
   }
 }

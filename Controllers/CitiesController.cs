@@ -22,19 +22,17 @@ namespace WorldCities.Controllers
         }
 
         // GET: api/Cities
-        // GET: api/Cities
         // GET: api/Cities/?pageIndex=0&pageSize=10
-        // GET: api/Cities/0/10
-        // GET: api/Cities/?pageIndex=0&pageSize=10&sortColumn=name&
-        //  sortOrder=asc
+        // GET: api/Cities/?pageIndex=0&pageSize=10&sortColumn=name&sortOrder=asc
+        // GET: api/Cities/?pageIndex=0&pageSize=10&sortColumn=name&sortOrder=asc&filterColumn=name&filterQuery=york
         [HttpGet]
         public async Task<ActionResult<ApiResult<CityDTO>>> GetCities(
-        int pageIndex = 0,
-        int pageSize = 10,
-        string sortColumn = null,
-        string sortOrder = null,
-        string filterColumn = null,
-        string filterQuery = null)
+                int pageIndex = 0,
+                int pageSize = 10,
+                string sortColumn = null,
+                string sortOrder = null,
+                string filterColumn = null,
+                string filterQuery = null)
         {
             return await ApiResult<CityDTO>.CreateAsync(
                     _context.Cities
@@ -70,8 +68,8 @@ namespace WorldCities.Controllers
         }
 
         // PUT: api/Cities/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCity(int id, City city)
         {
@@ -102,8 +100,8 @@ namespace WorldCities.Controllers
         }
 
         // POST: api/Cities
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<City>> PostCity(City city)
         {
@@ -139,7 +137,11 @@ namespace WorldCities.Controllers
         public bool IsDupeCity(City city)
         {
             return _context.Cities.Any(
-                e => e.Name == city.Name && e.Lat == city.Lat && e.Lon == city.Lon && e.CountryId == city.CountryId && e.Id != city.Id);
+                e => e.Name == city.Name
+                && e.Lat == city.Lat
+                && e.Lon == city.Lon
+                && e.CountryId == city.CountryId
+                && e.Id != city.Id);
         }
     }
 }
