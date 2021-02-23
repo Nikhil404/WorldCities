@@ -6,20 +6,21 @@ import {
   FormControl,
   Validators,
   AsyncValidatorFn,
-  AbstractControl,
+  AbstractControl
 } from "@angular/forms";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { City } from "./City";
 import { Country } from "./../countries/country";
+import { BaseFormComponent } from "../base.form.component";
 
 @Component({
   selector: "app-city-edit",
   templateUrl: "./city-edit.component.html",
-  styleUrls: ["./city-edit.component.css"],
+  styleUrls: ["./city-edit.component.css"]
 })
-export class CityEditComponent {
+export class CityEditComponent extends BaseFormComponent {
   // the view title
   title: string;
 
@@ -40,7 +41,9 @@ export class CityEditComponent {
     private router: Router,
     private http: HttpClient,
     @Inject("BASE_URL") private baseUrl: string
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit() {
     this.form = new FormGroup(
@@ -48,7 +51,7 @@ export class CityEditComponent {
         name: new FormControl("", Validators.required),
         lat: new FormControl("", Validators.required),
         lon: new FormControl("", Validators.required),
-        countryId: new FormControl("", Validators.required),
+        countryId: new FormControl("", Validators.required)
       },
       null,
       this.isDupeCity()
@@ -69,7 +72,7 @@ export class CityEditComponent {
 
       var url = this.baseUrl + "api/cities/IsDupeCity";
       return this.http.post<boolean>(url, city).pipe(
-        map((result) => {
+        map(result => {
           return result ? { isDupeCity: true } : null;
         })
       );
@@ -88,14 +91,14 @@ export class CityEditComponent {
       //fetch the city from server
       var url = this.baseUrl + "api/cities/" + this.id;
       this.http.get<City>(url).subscribe(
-        (result) => {
+        result => {
           this.city = result;
           this.title = "Edit -" + this.city.name;
 
           //update the form with the city value
           this.form.patchValue(this.city);
         },
-        (error) => console.error(error)
+        error => console.error(error)
       );
     } else {
       //ADD NEW MODE
@@ -116,10 +119,10 @@ export class CityEditComponent {
     this.http
       .get<any>(url, { params })
       .subscribe(
-        (result) => {
+        result => {
           this.countries = result.data;
         },
-        (error) => console.error(error)
+        error => console.error(error)
       );
   }
 
@@ -133,25 +136,25 @@ export class CityEditComponent {
     if (this.id) {
       var url = this.baseUrl + "api/cities/" + this.city.id;
       this.http.put<City>(url, city).subscribe(
-        (result) => {
+        result => {
           console.log("City " + city.id + " has been updated.");
 
           // go back to cities view
           this.router.navigate(["/cities"]);
         },
-        (error) => console.error(error)
+        error => console.error(error)
       );
     } else {
       //ADD NEW Mode
       var url = this.baseUrl + "api/cities";
       this.http.post<City>(url, city).subscribe(
-        (result) => {
+        result => {
           console.log("City " + result.id + " has been created.");
 
           // go back to cities view
           this.router.navigate(["/cities"]);
         },
-        (error) => console.error(error)
+        error => console.error(error)
       );
     }
   }
