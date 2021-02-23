@@ -6,7 +6,7 @@ import {
   FormBuilder,
   Validators,
   AbstractControl,
-  AsyncValidatorFn
+  AsyncValidatorFn,
 } from "@angular/forms";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
@@ -18,7 +18,7 @@ import { CountryService } from "./country.service";
 @Component({
   selector: "app-country-edit",
   templateUrl: "./country-edit.component.html",
-  styleUrls: ["./country-edit.component.css"]
+  styleUrls: ["./country-edit.component.css"],
 })
 export class CountryEditComponent extends BaseFormComponent {
   // the view title
@@ -50,13 +50,13 @@ export class CountryEditComponent extends BaseFormComponent {
       iso2: [
         "",
         [Validators.required, Validators.pattern(/[a-zA-Z]{2}/)],
-        this.isDupeField("iso2")
+        this.isDupeField("iso2"),
       ],
       iso3: [
         "",
         [Validators.required, Validators.pattern(/[a-zA-Z]{3}/)],
-        this.isDupeField("iso3")
-      ]
+        this.isDupeField("iso3"),
+      ],
     });
 
     this.loadData();
@@ -70,14 +70,14 @@ export class CountryEditComponent extends BaseFormComponent {
 
       // fetch the country from the server
       this.countryService.get<Country>(this.id).subscribe(
-        result => {
+        (result) => {
           this.country = result;
           this.title = "Edit - " + this.country.name;
 
           // update the form with the country value
           this.form.patchValue(this.country);
         },
-        error => console.error(error)
+        (error) => console.error(error)
       );
     } else {
       // ADD NEW MODE
@@ -96,24 +96,24 @@ export class CountryEditComponent extends BaseFormComponent {
     if (this.id) {
       // EDIT mode
       this.countryService.put<Country>(country).subscribe(
-        result => {
+        (result) => {
           console.log("Country " + country.id + " has been updated.");
 
           // go back to cities view
           this.router.navigate(["/countries"]);
         },
-        error => console.error(error)
+        (error) => console.error(error)
       );
     } else {
       // ADD NEW mode
       this.countryService.post<Country>(country).subscribe(
-        result => {
+        (result) => {
           console.log("Country " + result.id + " has been created.");
 
           // go back to cities view
           this.router.navigate(["/countries"]);
         },
-        error => console.error(error)
+        (error) => console.error(error)
       );
     }
   }
@@ -127,7 +127,7 @@ export class CountryEditComponent extends BaseFormComponent {
       return this.countryService
         .isDupeField(countryId, fieldName, control.value)
         .pipe(
-          map(result => {
+          map((result) => {
             return result ? { isDupeField: true } : null;
           })
         );

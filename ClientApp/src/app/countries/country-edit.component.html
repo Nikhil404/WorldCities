@@ -23,9 +23,7 @@
         "
         class="invalid-feedback"
       >
-        <div *ngIf="form.get('name').errors?.required">
-          Name is required.
-        </div>
+        <div *ngIf="form.get('name').errors?.required">Name is required.</div>
         <div *ngIf="form.get('name').errors?.isDupeField">
           Name does already exist: please choose another.
         </div>

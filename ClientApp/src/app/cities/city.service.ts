@@ -1,12 +1,12 @@
-import { Observable } from "rxjs";
-import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable, Inject } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { BaseService, ApiResult } from "../base.service";
+import { Observable } from "rxjs";
 
-import { BaseService, ApiResult } from "./../base.service";
 import { City } from "./city";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class CityService extends BaseService {
   constructor(http: HttpClient, @Inject("BASE_URL") baseUrl: string) {
@@ -43,12 +43,12 @@ export class CityService extends BaseService {
   }
 
   put<City>(item): Observable<City> {
-    var url = this.baseUrl + "api/Cities/";
+    var url = this.baseUrl + "api/Cities/" + item.id;
     return this.http.put<City>(url, item);
   }
 
   post<City>(item): Observable<City> {
-    var url = this.baseUrl + "api/Cities/";
+    var url = this.baseUrl + "api/Cities";
     return this.http.post<City>(url, item);
   }
 

@@ -25,9 +25,7 @@
       />
 
       <div *ngIf="hasError('name')" class="invalid-feedback">
-        <div *ngIf="form.get('name').errors?.required">
-          Name is required.
-        </div>
+        <div *ngIf="form.get('name').errors?.required">Name is required.</div>
       </div>
     </div>
 
