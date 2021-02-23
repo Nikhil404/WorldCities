@@ -5,6 +5,8 @@ import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 
 import { City } from "./city";
+import { CityService } from "./city.service";
+import { ApiResult } from "../base.service";
 
 @Component({
   selector: "app-cities",
@@ -32,10 +34,7 @@ export class CitiesComponent {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  constructor(
-    private http: HttpClient,
-    @Inject("BASE_URL") private baseUrl: string
-  ) {}
+  constructor(private cityService: CityService) {}
 
   ngOnInit() {
     this.loadData(null);
@@ -52,25 +51,25 @@ export class CitiesComponent {
   }
 
   getData(event: PageEvent) {
-    var url = this.baseUrl + "api/Cities";
-    var params = new HttpParams()
-      .set("pageIndex", event.pageIndex.toString())
-      .set("pageSize", event.pageSize.toString())
-      .set("sortColumn", this.sort ? this.sort.active : this.defaultSortColumn)
-      .set(
-        "sortOrder",
-        this.sort ? this.sort.direction : this.defaultSortOrder
-      );
-    if (this.filterQuery) {
-      params = params
-        .set("filterColumn", this.defaultFilterColumn)
-        .set("filterQuery", this.filterQuery);
-    }
-    this.http
-      .get<any>(url, { params })
+    var sortColumn = this.sort ? this.sort.active : this.defaultSortColumn;
+
+    var sortOrder = this.sort ? this.sort.direction : this.defaultSortOrder;
+
+    var filterColumn = this.filterQuery ? this.defaultFilterColumn : null;
+
+    var filterQuery = this.filterQuery ? this.filterQuery : null;
+
+    this.cityService
+      .getData<ApiResult<City>>(
+        event.pageIndex,
+        event.pageSize,
+        sortColumn,
+        sortOrder,
+        filterColumn,
+        filterQuery
+      )
       .subscribe(
         result => {
-          console.log(result);
           this.paginator.length = result.totalCount;
           this.paginator.pageIndex = result.pageIndex;
           this.paginator.pageSize = result.pageSize;
