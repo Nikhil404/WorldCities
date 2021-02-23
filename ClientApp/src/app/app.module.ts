@@ -3,24 +3,31 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
+import { AngularMaterialModule } from "./angular-material.module";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from "./app.component";
+import { BaseFormComponent } from "./base.form.component";
 import { NavMenuComponent } from "./nav-menu/nav-menu.component";
 import { HomeComponent } from "./home/home.component";
 import { CitiesComponent } from "./cities/cities.component";
 import { CityEditComponent } from "./cities/city-edit.component";
+import { CountryEditComponent } from "./countries/country-edit.component";
 import { CountriesComponent } from "./countries/countries.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AngularMaterialModule } from "./angular-material.module";
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
+
+import { CityService } from "./cities/city.service";
+
 @NgModule({
   declarations: [
     AppComponent,
+    BaseFormComponent,
     NavMenuComponent,
     HomeComponent,
     CitiesComponent,
     CountriesComponent,
-    CityEditComponent
+    CityEditComponent,
+    CountryEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -31,13 +38,15 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
       { path: "cities", component: CitiesComponent },
       { path: "city/:id", component: CityEditComponent },
       { path: "city", component: CityEditComponent },
-      { path: "countries", component: CountriesComponent }
+      { path: "countries", component: CountriesComponent },
+      { path: "country/:id", component: CountryEditComponent },
+      { path: "country", component: CountryEditComponent }
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CityService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
