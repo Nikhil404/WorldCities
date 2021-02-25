@@ -21,6 +21,8 @@ import { CountriesComponent } from "./countries/countries.component";
 
 import { CityService } from "./cities/city.service";
 import { CountryService } from "./countries/country.service";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { CountryService } from "./countries/country.service";
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     CityService,
