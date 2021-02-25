@@ -45,6 +45,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\ng-connection-service\connection-service.module.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\ng-connection-service\connection-service.service.spec.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\ng-connection-service\connection-service.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Pages\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
 
