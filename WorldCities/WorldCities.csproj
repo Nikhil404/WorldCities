@@ -16,6 +16,7 @@
     <PackageReference Include="EPPlus" Version="5.5.4" />
     <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="3.1.12" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.12" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.11" />
@@ -41,6 +42,10 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\cities\city.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

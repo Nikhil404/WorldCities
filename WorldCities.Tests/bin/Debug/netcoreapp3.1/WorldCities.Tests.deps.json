@@ -10,6 +10,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": "3.1.12",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.12",
+          "Microsoft.AspNetCore.Identity.UI": "3.1.12",
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.12",
           "Microsoft.NET.Test.Sdk": "16.5.0",
           "Moq": "4.16.1",
@@ -2809,6 +2810,7 @@
           "EPPlus": "5.5.4",
           "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": "3.1.12",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.12",
+          "Microsoft.AspNetCore.Identity.UI": "3.1.12",
           "Microsoft.AspNetCore.SpaServices.Extensions": "3.1.9",
           "Microsoft.EntityFrameworkCore": "3.1.12",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.12",

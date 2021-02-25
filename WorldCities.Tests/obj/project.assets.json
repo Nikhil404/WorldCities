@@ -3780,6 +3780,7 @@
           "EPPlus": "5.5.4",
           "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": "3.1.12",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.12",
+          "Microsoft.AspNetCore.Identity.UI": "3.1.12",
           "Microsoft.AspNetCore.SpaServices.Extensions": "3.1.9",
           "Microsoft.EntityFrameworkCore": "3.1.12",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.12",
@@ -11414,6 +11415,7 @@
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.AspNetCore.ApiAuthorization.IdentityServer >= 3.1.12",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.12",
+      "Microsoft.AspNetCore.Identity.UI >= 3.1.12",
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.12",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
       "Moq >= 4.16.1",
@@ -11429,11 +11431,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AngularProjects\\WorldCities.Tests\\WorldCities.Tests.csproj",
+      "projectUniqueName": "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\WorldCities.Tests.csproj",
       "projectName": "WorldCities.Tests",
-      "projectPath": "D:\\AngularProjects\\WorldCities.Tests\\WorldCities.Tests.csproj",
+      "projectPath": "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\WorldCities.Tests.csproj",
       "packagesPath": "C:\\Users\\nbanuri\\.nuget\\packages\\",
-      "outputPath": "D:\\AngularProjects\\WorldCities.Tests\\obj\\",
+      "outputPath": "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nbanuri\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -11449,8 +11451,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\AngularProjects\\WorldCities\\WorldCities.csproj": {
-              "projectPath": "D:\\AngularProjects\\WorldCities\\WorldCities.csproj"
+            "D:\\AngularProjects\\WorldCities\\WorldCities\\WorldCities.csproj": {
+              "projectPath": "D:\\AngularProjects\\WorldCities\\WorldCities\\WorldCities.csproj"
             }
           }
         }
@@ -11469,6 +11471,10 @@
             "version": "[3.1.12, )"
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[3.1.12, )"
+          },
+          "Microsoft.AspNetCore.Identity.UI": {
             "target": "Package",
             "version": "[3.1.12, )"
           },

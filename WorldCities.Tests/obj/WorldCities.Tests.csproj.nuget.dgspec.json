@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AngularProjects\\WorldCities.Tests\\WorldCities.Tests.csproj": {}
+    "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\WorldCities.Tests.csproj": {}
   },
   "projects": {
-    "D:\\AngularProjects\\WorldCities.Tests\\WorldCities.Tests.csproj": {
+    "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\WorldCities.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AngularProjects\\WorldCities.Tests\\WorldCities.Tests.csproj",
+        "projectUniqueName": "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\WorldCities.Tests.csproj",
         "projectName": "WorldCities.Tests",
-        "projectPath": "D:\\AngularProjects\\WorldCities.Tests\\WorldCities.Tests.csproj",
+        "projectPath": "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\WorldCities.Tests.csproj",
         "packagesPath": "C:\\Users\\nbanuri\\.nuget\\packages\\",
-        "outputPath": "D:\\AngularProjects\\WorldCities.Tests\\obj\\",
+        "outputPath": "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nbanuri\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\AngularProjects\\WorldCities\\WorldCities.csproj": {
-                "projectPath": "D:\\AngularProjects\\WorldCities\\WorldCities.csproj"
+              "D:\\AngularProjects\\WorldCities\\WorldCities\\WorldCities.csproj": {
+                "projectPath": "D:\\AngularProjects\\WorldCities\\WorldCities\\WorldCities.csproj"
               }
             }
           }
@@ -47,6 +47,10 @@
               "version": "[3.1.12, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[3.1.12, )"
             },
@@ -97,14 +101,14 @@
         }
       }
     },
-    "D:\\AngularProjects\\WorldCities\\WorldCities.csproj": {
+    "D:\\AngularProjects\\WorldCities\\WorldCities\\WorldCities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AngularProjects\\WorldCities\\WorldCities.csproj",
+        "projectUniqueName": "D:\\AngularProjects\\WorldCities\\WorldCities\\WorldCities.csproj",
         "projectName": "WorldCities",
-        "projectPath": "D:\\AngularProjects\\WorldCities\\WorldCities.csproj",
+        "projectPath": "D:\\AngularProjects\\WorldCities\\WorldCities\\WorldCities.csproj",
         "packagesPath": "C:\\Users\\nbanuri\\.nuget\\packages\\",
-        "outputPath": "D:\\AngularProjects\\WorldCities\\obj\\",
+        "outputPath": "D:\\AngularProjects\\WorldCities\\WorldCities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nbanuri\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -140,6 +144,10 @@
               "version": "[3.1.12, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[3.1.12, )"
             },

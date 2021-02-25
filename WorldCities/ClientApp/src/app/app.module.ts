@@ -6,6 +6,9 @@ import { RouterModule } from "@angular/router";
 import { AngularMaterialModule } from "./angular-material.module";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ApiAuthorizationModule } from "src/api-authorization/api-authorization.module";
+import { AuthorizeGuard } from "src/api-authorization/authorize.guard";
+import { AuthorizeInterceptor } from "src/api-authorization/authorize.interceptor";
 
 import { AppComponent } from "./app.component";
 import { BaseFormComponent } from "./base.form.component";
@@ -17,6 +20,7 @@ import { CountryEditComponent } from "./countries/country-edit.component";
 import { CountriesComponent } from "./countries/countries.component";
 
 import { CityService } from "./cities/city.service";
+import { CountryService } from "./countries/country.service";
 
 @NgModule({
   declarations: [
@@ -33,20 +37,41 @@ import { CityService } from "./cities/city.service";
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
     HttpClientModule,
     FormsModule,
+    ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "cities", component: CitiesComponent },
-      { path: "city/:id", component: CityEditComponent },
-      { path: "city", component: CityEditComponent },
+      {
+        path: "city/:id",
+        component: CityEditComponent,
+        canActivate: [AuthorizeGuard]
+      },
+      {
+        path: "city",
+        component: CityEditComponent,
+        canActivate: [AuthorizeGuard]
+      },
       { path: "countries", component: CountriesComponent },
-      { path: "country/:id", component: CountryEditComponent },
-      { path: "country", component: CountryEditComponent }
+      {
+        path: "country/:id",
+        component: CountryEditComponent,
+        canActivate: [AuthorizeGuard]
+      },
+      {
+        path: "country",
+        component: CountryEditComponent,
+        canActivate: [AuthorizeGuard]
+      }
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule
   ],
-  providers: [CityService],
+  providers: [
+    CityService,
+    CountryService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

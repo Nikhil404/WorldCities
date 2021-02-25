@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p+Ef9zHo+U37rnkmwl/D64BLwIKQu/TqVOon3G+Chv/SR7j/DSo0hewHGbFdNUTZjJxIyeAdBPv0avfTmrIkeg==",
+  "dgSpecHash": "9LROqWCvWc5JFcK67XaAkujfIG2qqb37tqLfqeDP5KuyHvVE8S7Z4MUTVJOysFOzbZtGglG6m4U7jTB7G59YQQ==",
   "success": true,
-  "projectFilePath": "D:\\AngularProjects\\WorldCities.Tests\\WorldCities.Tests.csproj",
+  "projectFilePath": "D:\\AngularProjects\\WorldCities\\WorldCities.Tests\\WorldCities.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nbanuri\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\nbanuri\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
